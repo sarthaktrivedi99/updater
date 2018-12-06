@@ -8,6 +8,7 @@ import urllib.error
 from pkg_resources import parse_version
 import re
 import zipfile
+import datetime
 class update():
     def __init__(self,host,fileconst,verfile='ver.json'):
         self.file = fileconst
@@ -71,10 +72,14 @@ class update():
 
     def checkver(self):
         if parse_version(self.ver) < parse_version(self.verB):
+            f = open("log.txt",'a')
+            str = "Time:{}Current Version:{}\tAvaialable Version:{}\n".format(datetime.datetime.now(),self.ver,self.verB)
+            f.write(str)
+            f.close()
             pass
         else:
             print("App Upto Date!")
-            rasie NameError()
+            raise NameError()
 
     def getfiles(self):
         self.info=[]
@@ -142,5 +147,5 @@ class update():
             self.spinner.succeed("Rolled Back Successfully")
 
 if __name__ == '__main__':
-    up = update('ftp://192.168.0.8',__file__)
+    up = update('ftp://localhost',__file__)
     
