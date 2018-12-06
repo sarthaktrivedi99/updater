@@ -71,11 +71,11 @@ class update():
             exit()
 
     def checkver(self):
+        f = open("log.txt",'a')
+        str = "Time:{}Current Version:{}\tAvaialable Version:{}\n".format(datetime.datetime.now(),self.ver,self.verB)
+        f.write(str)
+        f.close()
         if parse_version(self.ver) < parse_version(self.verB):
-            f = open("log.txt",'a')
-            str = "Time:{}Current Version:{}\tAvaialable Version:{}\n".format(datetime.datetime.now(),self.ver,self.verB)
-            f.write(str)
-            f.close()
             pass
         else:
             print("App Upto Date!")
