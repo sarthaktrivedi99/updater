@@ -27,7 +27,16 @@ class update():
  \___/|_|  |_|\___/|_| |_|
                           
                           """+ '\33[0m')
-
+        try:
+            self.verfile()
+            self.getinfo()
+            self.checkver()
+            self.getfiles()
+            self.createbackself()
+            self.unzip()
+            self.replacewithoriginal()
+        except NameError:
+            pass
     def verfile(self):
         self.spinner = Halo()
         try:
@@ -65,7 +74,7 @@ class update():
             pass
         else:
             print("App Upto Date!")
-            exit()
+            rasie NameError()
 
     def getfiles(self):
         self.info=[]
@@ -134,10 +143,4 @@ class update():
 
 if __name__ == '__main__':
     up = update('ftp://192.168.0.8',__file__)
-    up.verfile()
-    up.getinfo()
-    up.checkver()
-    up.getfiles()
-    up.createbackup()
-    up.unzip()
-    up.replacewithoriginal()
+    
